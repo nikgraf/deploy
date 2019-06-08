@@ -10,7 +10,7 @@ module.exports = function now(args = []) {
   if (!NOW_TOKEN) {
     throw new Error(`The NOW_TOKEN env var is required`)
   }
-  const nowArgs = [`--token=${NOW_TOKEN}`, `-A now-changelog.json`, ...args]
+  const nowArgs = [`--token=${NOW_TOKEN}`, `--local-config=now-changelog.json`, ...args]
   return execa(NOW_BIN, nowArgs, {stderr: 'inherit'}).then(res => res.stdout)
 }
 
